@@ -23,7 +23,19 @@ img {
   max-width: 350px;
   width: 100%;
 }
-
+h1{ 
+    padding-left: 1rem;
+    color: rgb(126, 237, 252);
+    position:sticky
+}
+.title{
+    background-color: #39234e;
+    border-style:groove;
+    border-radius: 1rem;
+    margin-left: 5%;
+    margin-bottom: 3rem;
+    position: relative;
+}
 p {
   color: #ffffffef;
   font-size: large;

@@ -73,7 +73,23 @@ function showQuote() {
 */
 function showRiddle() {
   // Value should be in format: { question: '', answer: '' }
+  clearAll();
   const randomRiddle = getRandomData('riddles');
+  const {question, answer} = randomRiddle;
+  const riddle = document.createElement('p');
+  const ansElem = document.createElement('p')
+  const container = document.querySelector('.riddles-content')
+  riddle.textContent = question;
+  ansElem.textContent = answer;
+ 
+  ansElem.setAttribute('id' ,'riddle-answer')
+  ansElem.hidden = true;
+  clearAll();
+  container.appendChild(riddle)
+  container.appendChild(ansElem)
+    console.log(ansElem)
+//   ans.textContent = question;
+ 
 }
 
 /**
@@ -84,7 +100,31 @@ function showRiddle() {
 * - If there is a riddle shown but no answer, unhide the answer!
 */
 function revealAnswers() {
-  
+    // const riddleContainer = document.querySelector('.riddles-content');
+    // const riddle = riddleContainer.querySelector('p');
+    // const answer = document.querySelector('#riddle-answer');
+
+    const riddlesContainer = document.querySelector('.riddles-content') // this our div
+    const riddle = riddlesContainer.querySelector('p'); //we get all paragraph in div
+    const answer = document.querySelector('#riddle-answer') //answer hidden
+    
+    // console.log(answer.hidden);
+   if(riddle && answer.hidden){
+       answer.hidden = false
+   }else if(riddle){
+       alert("Riddle is already there");
+   }else{
+       alert("There is no riddle to reveal!")
+   }
+
+   
+    console.log(answer.hidden)
+//    if(answer.hidden == true){
+//        answer.hidden = false;
+//    }else{
+//        answer.hidden = true;
+   
+   
 }
 
 /**
