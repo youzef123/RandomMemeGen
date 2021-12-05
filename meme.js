@@ -14,6 +14,19 @@ function clearAll() {
    quoteContainer.innerHTML = '';
    riddlesContainer.innerHTML = '';
 }
+
+/**
+* TODO: 
+* - Loop through memes folder to get the memes
+* - automated task
+*/
+
+const memes = [];
+for(let i = 1 ; i <= 10 ; i++){
+    let location = `./memes/${i}.jpg`;
+    memes.push(location);
+}
+
 /**
 * TODO: 
 * - Show a random Meme in the correct location
@@ -46,14 +59,13 @@ function showJoke() {
   container.appendChild(joke)
 }
 
-
 /**
 * TODO: 
 * - Show a random quote in the correct location
 * - Never show more than 1 quote at a time
 */
+
 function showQuote() {
-  // Value should be in format: { quote: '', author: '' }
   clearAll();
   const randomQuote = getRandomData('quotes');
   const quote = document.createElement('p');
@@ -67,12 +79,12 @@ function showQuote() {
 
 /**
 * TODO: 
-* - Show a random riddle in the correct location
-* - Never show more than 1 riddle at a time
-* - Always hide the riddle's answer initially
+* - Show a random bugtong in the correct location
+* - Never show more than 1 bugtong at a time
+* - Always hide the bugtong's answer initially
 */
 function showRiddle() {
-  // Value should be in format: { question: '', answer: '' }
+
   clearAll();
   const randomRiddle = getRandomData('riddles');
   const {question, answer} = randomRiddle;
@@ -82,89 +94,44 @@ function showRiddle() {
   riddle.textContent = question;
   ansElem.textContent = answer;
  
-  ansElem.setAttribute('id' ,'riddle-answer')
+  ansElem.setAttribute('id' ,'riddle-answer');
   ansElem.hidden = true;
   clearAll();
-  container.appendChild(riddle)
-  container.appendChild(ansElem)
-    console.log(ansElem)
-//   ans.textContent = question;
- 
+  container.appendChild(riddle);
+  container.appendChild(ansElem);
 }
 
 /**
-* TODO: Unhide the riddle's answer
-* - If there is no riddle shown, alert the user that there is no riddle
-* - If there is a riddle shown and an answer shown, alert the user
+* TODO: Unhide the bugtong's answer
+* - If there is no bugtong shown, alert the user that there is no bugtong
+* - If there is a bugtong shown and an answer shown, alert the user
 *   that the answer is already revealed
-* - If there is a riddle shown but no answer, unhide the answer!
+* - If there is a bugtong shown but no answer, unhide the answer!
 */
 function revealAnswers() {
-    // const riddleContainer = document.querySelector('.riddles-content');
-    // const riddle = riddleContainer.querySelector('p');
-    // const answer = document.querySelector('#riddle-answer');
 
     const riddlesContainer = document.querySelector('.riddles-content') // this our div
     const riddle = riddlesContainer.querySelector('p'); //we get all paragraph in div
     const answer = document.querySelector('#riddle-answer') //answer hidden
     
-    // console.log(answer.hidden);
    if(riddle && answer.hidden){
        answer.hidden = false
    }else if(riddle){
-       alert("Riddle is already there");
+       alert("Ang sagot ay nandiyan na");
    }else{
-       alert("There is no riddle to reveal!")
+       alert("Wala pang bugtong!")
    }
-
-   
-    console.log(answer.hidden)
-//    if(answer.hidden == true){
-//        answer.hidden = false;
-//    }else{
-//        answer.hidden = true;
-   
    
 }
 
-/**
-* This function is used to get random data.  Don't worry about how it works, just know how to use it.  Usage is pre-filled in the functions above already, but here's an explanation of the function anyways.
-* 
-* Valid arguments:
-*
-* 'memes', 'jokes', 'quotes', 'riddles'
-*
-* Return values:
-* 
-* For meme data: 
-* A string representing an image url
-* 
-* For joke data: 
-* A string representing the joke
-* 
-* For quote data:
-* An object - { quote: '', author: '' }
-* 
-* For riddle data:
-* An object - { question: '', answer: '' }
-*
-* Example usage: getRandomData('quotes');
-*/
+// Random selection of buttons
+
 function getRandomData(type) {
   return data[type][rn(data[type].length)];
 }
 
-// ----------------------------------------------------
-// NO NEED TO CHANGE ANYTHING BELOW but...
-// feel free to add/remove items from these lists to customize
-// your results
-// ----------------------------------------------------
-
-// Source: https://www.thecoderpedia.com/blog/programming-memes/, Reddit
-const memes = ['https://i.redd.it/a0v87gwzoge61.jpg', 'https://i.redd.it/q29egav34ee61.jpg', 'https://i.redd.it/iij16swxjie61.jpg', 'https://i.redd.it/vek7dm2hrge61.jpg', 'https://www.testbytes.net/wp-content/uploads/2019/06/Untitled-8.png', 'https://miro.medium.com/max/1000/0*Ua695vjzFHV6VNOX.png', 'https://pbs.twimg.com/media/EKkPagPXkAA__Qo.jpg', 'https://code-love.com/wp-content/uploads/2019/03/download.jpeg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Programmer-while-sleeping.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Evolution-of-Memory-Storage-1024x996.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Programming-Memes-Error-in-Code-896x1024.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Coding-Meme-Code-Comments-be-Like-925x1024.jpg', 'https://www.thecoderpedia.com/wp-content/uploads/2020/06/Internet-Explorer-Joke-915x1024.jpg'];
-
-// Sourced from: http://www.devtopics.com/best-programming-jokes/
-const jokes = ['This statement', 'Eight bytes walk into a bar.  The bartender asks, “Can I get you anything?” “Yeah,” reply the bytes.  “Make us a double.”', 'There are only 10 kinds of people in this world: those who know binary and those who don’t.', 'All programmers are playwrights, and all computers are lousy actors.', 'Have you heard about the new Cray super computer?  It’s so fast, it executes an infinite loop in 6 seconds.', 'The generation of random numbers is too important to be left to chance.', 'Debugging: Removing the needles from the haystack.', '“Debugging” is like being the detective in a crime drama where you are also the murderer.', 'There are two ways to write error-free programs; only the third one works.', 'The best thing about a Boolean is even if you are wrong, you are only off by a bit.'];
+// Sorry sa aking mga corny na biro
+const jokes = ['Ang python ay parang kopi; nakakaadik hahaha.', 'Nanood ako ng Java Language tutorial sa youtube; ngayon marunong na ako salita ng indiano', 'Meron lamang 10 tao dito sa mundo: yung alam ang binary at hindi.', 'Tsaka mo na ako angasan pag kaya mo na mag code ng walang kape.', 'Nabalitaan mo ba yung bagong Super Computer? sa sobrang bilis kaya nito magrun ng infinite loop sa loob ng 6 na segundo', 'Debugging: Para kang nagtitinidor ng sabaw.', 'Ang “Debugging” ay parang ikaw ang imbestigador sa ginawa mong krimen.', 'May dalawang uri ng pag co-code na walang error; yung pangatlo ang gumagana.', '(!Boolean) kaba kasi kahit sobrang galing mo mag sinungaling hahaha!'];
 
 // source: https://www.goodreads.com/quotes/tag/programming
 const quotes = [
@@ -182,14 +149,14 @@ const quotes = [
   { quote: 'No matter which field of work you want to go in, it is of great importance to learn at least one programming language.', author: 'Ram Ray' },
 ];
 
-// Source: https://www.rd.com/list/challenging-riddles/
+// Source: https://philnews.ph/2020/02/03/riddles-tagalog-examples-of-riddles-bugtong-in-tagalog/
 const riddles = [
-  { question: 'I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?', answer: 'An echo' },
-  { question: 'You measure my life in hours and I serve you by expiring. I’m quick when I’m thin and slow when I’m fat. The wind is my enemy. ', answer: 'A Candle' },
-  { question: 'I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I? ', answer: 'A Map' },
-  { question: 'What is seen in the middle of March and April that can’t be seen at the beginning or end of either month?', answer: 'The letter "R"' },
-  { question: 'You see a boat filled with people. It has not sunk, but when you look again you don’t see a single person on the boat. Why?', answer: 'All the people were married' },
-  { question: 'What word in the English language does the following: the first two letters signify a male, the first three letters signify a female, the first four letters signify a great, while the entire world signifies a great woman. What is the word?', answer: 'Heroine' }
+  { question: 'Sa araw nahihimbing At sa gabi ay gising.', answer: 'Paniki' },
+  { question: 'Hindi hayop, hindi tao, pumupulupot sa tiyan mo.', answer: 'Sinturon' },
+  { question: 'Dalawang batong itim, malayo ang nararating.', answer: 'Mata' },
+  { question: 'Kay lapit-lapit na sa mata, di mo pa rin makita.', answer: 'Tenga' },
+  { question: 'Lumuluha walang mata, lumalakad walang paa.', answer: 'Ballpen' },
+  { question: 'Isang prinsesa, punong-puno ng mata.', answer: 'Pinya' }
 ];
 
 // Just a little helper function

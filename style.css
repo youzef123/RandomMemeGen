@@ -1,14 +1,7 @@
-/* 
-NO ACTION REQUIRED BY YOU
-
-Don't worry about this section.  These CSS styles are here to make the HTML document look cleaner, but are not part of the lesson.
-
-Just write your HTML however you want and these will automatically work.
-*/
 
 body {
   background-color: #1e0031;
-  color: #8abf8d;
+  color: #3477DB;
   font-family: monospace;
 }
 
@@ -25,7 +18,7 @@ img {
 }
 h1{ 
     padding-left: 1rem;
-    color: rgb(126, 237, 252);
+    color: rgb(252, 141, 126);
     position:sticky
 }
 .title{
@@ -89,7 +82,7 @@ button {
   height: 35px;
   border: 1px solid #BFA38A;
   background: transparent;
-  color: #BFA38A;
+  color: #b6a5a5;
   border-radius: 5px;
 }
 
@@ -107,4 +100,8 @@ button:hover {
 .reveal-btn:hover {
   color: white;
   background-color: transparent;
+}
+#copyright{
+  color: #fcfcfc;
+  text-align: center;
 }
